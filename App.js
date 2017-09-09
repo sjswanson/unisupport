@@ -1,6 +1,8 @@
 import React from 'react';
 import { AppRegistry, StyleSheet, Text, View, Button } from 'react-native';
 import { StackNavigator} from 'react-navigation';
+import * as firebase from 'firebase';
+
 
 export default class App extends React.Component {
   render() {
