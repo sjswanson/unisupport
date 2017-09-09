@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppRegistry, StyleSheet, Text, View, Button } from 'react-native';
+import { AppRegistry, StyleSheet, Text, View, Button, TextInput } from 'react-native';
 import { StackNavigator} from 'react-navigation';
 import * as firebase from 'firebase';
 
@@ -35,7 +35,6 @@ class HomeScreen extends React.Component {
               onPress={() => navigate('Info')}
               title="Info"
             />
-
           </View>
         );
   }
@@ -77,9 +76,9 @@ class HomeScreen extends React.Component {
 //   }
 // }
 
-class OfferScreen extends React.Component {
+class RequestScreen extends React.Component {
   static navigationOptions = {
-    title: 'Offers',
+    title: 'Request',
   };
   render() {
     const { navigate } = this.props.navigation;
@@ -94,9 +93,9 @@ class OfferScreen extends React.Component {
   }
 }
 
-class RequestScreen extends React.Component {
+class OfferScreen extends React.Component {
   static navigationOptions = {
-    title: 'Request',
+    title: 'Offer',
   };
   render() {
     return (
@@ -155,12 +154,41 @@ class ShelterRequestScreen extends React.Component {
   static navigationOptions = {
     title: 'Shelter Request',
   };
+  constructor(props) {
+    super(props);
+    this.state = { text: 'Placeholder' };
+  }
+
+    storeRequest = type => {
+      firebase.database().ref('request' + int).set({
+        request: type
+      });
+      int = int + 1;
+    };
+
   render() {
     const { navigate } = this.props.navigation;
     return (
           <View>
+            <TextInput
+              title="Type"
+              style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+              onChangeText={(text) => this.setState({text})}
+              value={this.state.text}
+            />
+            <TextInput
+              title="Address"
+              style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+              onChangeText={(text) => this.setState({text})}
+              value={this.state.text}
+            />
+            <TextInput
+              style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+              onChangeText={(text) => this.setState({text})}
+              value={this.state.text}
+            />
             <Button
-              onPress={this.storeRequest}
+              onPress={() => this.storeRequest('shelter')}
               title="Submit"
             />
           </View>
