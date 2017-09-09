@@ -2,6 +2,8 @@ import React from 'react';
 import { AppRegistry, StyleSheet, Text, View, Button } from 'react-native';
 import { StackNavigator} from 'react-navigation';
 import * as firebase from 'firebase';
+import React from 'react';
+import { Ionicons } from '@expo/vector-icons';
 
 // Initialize Firebase
 const firebaseConfig = {
@@ -19,7 +21,7 @@ var int = 0;
 
 class HomeScreen extends React.Component {
   static navigationOptions = {
-    title: 'Welcome',
+    title: 'UniSupport',
   };
   render() {
     const { navigate } = this.props.navigation;
