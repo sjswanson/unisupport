@@ -28,14 +28,6 @@ export default class App extends React.Component {
   }
 }
 
-class HomeScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Welcome',
-  };
-  render() {
-    return <Text>Hello, Navigation!</Text>;
-  }
-}
 
 const styles = StyleSheet.create({
   container: {
@@ -45,9 +37,3 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-
-const SimpleApp = StackNavigator({
-  Home: { screen: HomeScreen },
-});
-
-AppRegistry.registerComponent('SimpleApp', () => SimpleApp);
