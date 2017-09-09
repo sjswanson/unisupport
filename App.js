@@ -1,8 +1,17 @@
 import React from 'react';
 import { AppRegistry, StyleSheet, Text, View, Button } from 'react-native';
 import { StackNavigator} from 'react-navigation';
-// import * as firebase from 'firebase';
+import * as firebase from 'firebase';
 
+// Initialize Firebase
+const firebaseConfig = {
+  apiKey: "AIzaSyAYvr_RQWQaTRxR9ImblpKBjGWHMUuUUgg",
+  authDomain: "unisupport-a0808.firebaseapp.com",
+  databaseURL: "https://unisupport-a0808.firebaseio.com",
+  storageBucket: "unisupport-a0808.appspot.com"
+};
+
+firebase.initializeApp(firebaseConfig);
 
 // export default class App extends React.Component {
 //   static navigationOptions = {
@@ -23,6 +32,14 @@ import { StackNavigator} from 'react-navigation';
 // }
 
 
+// Functions
+
+function storeRequest(type) {
+  firebase.database().ref('users/' + userId).set({
+    request: type
+  });
+}
+
 // export default class App extends React.Component {
 
 class HomeScreen extends React.Component {
@@ -35,15 +52,15 @@ class HomeScreen extends React.Component {
           <View>
             <Button
               onPress={() => navigate('Offer')}
-              title="Navigate to Offer"
+              title="Offer"
             />
             <Button
               onPress={() => navigate('Request')}
-              title="Navigate to Request"
+              title="Request"
             />
             <Button
               onPress={() => navigate('Info')}
-              title="Navigate to Info"
+              title="Info"
             />
 
           </View>
@@ -55,24 +72,31 @@ class OfferScreen extends React.Component {
   static navigationOptions = {
     title: 'Offer',
   };
+
+  storeRequest = type => {
+    firebase.database().ref('hello1').set({
+      request: type
+    });
+  };
+
   render() {
     return (
       <View>
         <Button
-          title="Offer"
-          onPress={this._handleButtonPress}
+          title="Shelter"
+          onPress={() => this.storeRequest('shelter')}
         />
           <Button
-          title="Request"
-          onPress={this._handleButtonPress}
+          title="Assistance"
+          onPress={() => this.storeRequest('assistance')}
         />
           <Button
-          title="Info"
-          onPress={this._handleButtonPress}
+          title="Supplies"
+          onPress={() => this.storeRequest('supplies')}
         />
           <Button
-          title="Report"
-          onPress={this._handleButtonPress}
+          title="Ride"
+          onPress={this.storeRequest}
         />
       </View>
     );
@@ -87,20 +111,20 @@ class RequestScreen extends React.Component {
     return (
       <View>
         <Button
-          title="Offer"
-          onPress={this._handleButtonPress}
+          title="Shelter"
+          onPress={this.storeRequest}
         />
           <Button
-          title="Request"
-          onPress={this._handleButtonPress}
+          title="Assistance"
+          onPress={this.storeRequest}
         />
           <Button
-          title="Info"
-          onPress={this._handleButtonPress}
+          title="Supplies"
+          onPress={this.storeRequest}
         />
           <Button
-          title="Report"
-          onPress={this._handleButtonPress}
+          title="Ride"
+          onPress={this.storeRequest}
         />
       </View>
     );
@@ -116,20 +140,20 @@ class InfoScreen extends React.Component {
     return (
       <View>
         <Button
-          title="Offer"
-          onPress={this._handleButtonPress}
+          title="Shelter"
+          onPress={this.storeRequest}
         />
           <Button
-          title="Request"
-          onPress={this._handleButtonPress}
+          title="Assistance"
+          onPress={this.storeRequest}
         />
           <Button
-          title="Info"
-          onPress={this._handleButtonPress}
+          title="Supplies"
+          onPress={this.storeRequest}
         />
           <Button
-          title="Report"
-          onPress={this._handleButtonPress}
+          title="Ride"
+          onPress={this.storeRequest}
         />
       </View>
     );
