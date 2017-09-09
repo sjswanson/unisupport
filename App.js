@@ -13,32 +13,7 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-// export default class App extends React.Component {
-//   static navigationOptions = {
-//     title: 'Welcome',
-//   };
-//   render() {
-//     return (
-//       <View style={styles.container}>
-//         <Text>Open up App.js to start working on your app!</Text>
-//         <Button
-//           onPress={() => navigate('Chat')}
-//           title="Chat with Lucy"
-//         />
-//
-//       </View>
-//     );
-//   }
-// }
-
-
-// Functions
-
-function storeRequest(type) {
-  firebase.database().ref('users/' + userId).set({
-    request: type
-  });
-}
+var int = 0;
 
 // export default class App extends React.Component {
 
@@ -74,9 +49,10 @@ class OfferScreen extends React.Component {
   };
 
   storeRequest = type => {
-    firebase.database().ref('hello1').set({
+    firebase.database().ref('request' + int).set({
       request: type
     });
+    int = int + 1;
   };
 
   render() {
@@ -160,11 +136,43 @@ class InfoScreen extends React.Component {
   }
 }
 
+
+class ShelterRequestScreen extends React.Component {
+  static navigationOptions = {
+    title: 'Request Options',
+  };
+  render() {
+    return (
+      <View>
+        <Button
+          title="Shelter"
+          onPress={this.storeRequest}
+        />
+          <Button
+          title="Assistance"
+          onPress={this.storeRequest}
+        />
+          <Button
+          title="Supplies"
+          onPress={this.storeRequest}
+        />
+          <Button
+          title="Ride"
+          onPress={this.storeRequest}
+        />
+      </View>
+    );
+  }
+}
+
+
 export default StackNavigator({
   Home: { screen: HomeScreen },
   Offer: { screen: OfferScreen },
   Request: { screen: RequestScreen },
   Info: { screen: InfoScreen },
+  ShelterRequest: { screen: ShelterRequestScreen },
+
 
 });
 
