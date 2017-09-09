@@ -2,8 +2,7 @@ import React from 'react';
 import { AppRegistry, StyleSheet, Text, View, Button } from 'react-native';
 import { StackNavigator} from 'react-navigation';
 import * as firebase from 'firebase';
-import React from 'react';
-import { Ionicons } from '@expo/vector-icons';
+
 
 // Initialize Firebase
 const firebaseConfig = {
@@ -118,21 +117,17 @@ class InfoScreen extends React.Component {
     return (
       <View>
         <Button
-          title="Shelter"
+          title="Map"
           onPress={this.storeRequest}
         />
           <Button
-          title="Assistance"
+          title="Updates"
           onPress={this.storeRequest}
         />
           <Button
-          title="Supplies"
+          title="Last Minutes"
           onPress={this.storeRequest}
-        />
-          <Button
-          title="Ride"
-          onPress={this.storeRequest}
-        />
+       />
       </View>
     );
   }
