@@ -136,43 +136,11 @@ class InfoScreen extends React.Component {
   }
 }
 
-
-class ShelterRequestScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Request Options',
-  };
-  render() {
-    return (
-      <View>
-        <Button
-          title="Shelter"
-          onPress={this.storeRequest}
-        />
-          <Button
-          title="Assistance"
-          onPress={this.storeRequest}
-        />
-          <Button
-          title="Supplies"
-          onPress={this.storeRequest}
-        />
-          <Button
-          title="Ride"
-          onPress={this.storeRequest}
-        />
-      </View>
-    );
-  }
-}
-
-
 export default StackNavigator({
   Home: { screen: HomeScreen },
   Offer: { screen: OfferScreen },
   Request: { screen: RequestScreen },
   Info: { screen: InfoScreen },
-  ShelterRequest: { screen: ShelterRequestScreen },
-
 
 });
 
